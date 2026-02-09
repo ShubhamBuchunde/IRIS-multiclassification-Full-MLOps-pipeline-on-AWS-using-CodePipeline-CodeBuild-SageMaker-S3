@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Upgrading pip..."
+      - pip install --upgrade pip
+      - echo "Upgrading sagemaker and boto3..."
+      - pip install --upgrade sagemaker boto3
+      - echo "Installing other dependencies..."
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Starting training and deployment..."
+      - python train_and_deploy.py
+artifacts:
+  files:
+    - '**/*'
