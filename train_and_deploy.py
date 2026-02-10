@@ -1,7 +1,7 @@
 import boto3
 import sagemaker
 #from sagemaker.session import Session
-from sagemaker import image_uris
+from sagemaker.image_uris import retrieve
 import os
 from botocore.exceptions import ClientError  # Use ClientError instead of SageMakerError
 import datetime
@@ -21,7 +21,7 @@ output_path = f"s3://{data_bucket}/model-artifacts/"  # Model artifacts go here
 role = "arn:aws:iam::919751357950:role/service-role/codebuild-iris-mlops-deploy-service-role"
 
 # Retrieve the XGBoost built-in container image URI
-xgboost_image = image_uris.retrieve("xgboost", region=region, version="1.2-1")
+xgboost_image = retrieve("xgboost", region=region, version="1.2-1")
 
 # Create an Estimator using the built-in XGBoost algorithm
 estimator = sagemaker.estimator.Estimator(
