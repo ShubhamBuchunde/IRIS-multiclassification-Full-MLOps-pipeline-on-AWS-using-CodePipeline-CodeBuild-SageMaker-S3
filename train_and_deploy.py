@@ -1,6 +1,6 @@
 import boto3
 import sagemaker
-from sagemaker.session import Session
+#from sagemaker.session import Session
 from sagemaker import image_uris
 import os
 from botocore.exceptions import ClientError  # Use ClientError instead of SageMakerError
@@ -12,7 +12,7 @@ print(f"SageMaker SDK version: {sagemaker.__version__}")
 # Initialize AWS session
 region = os.environ.get('AWS_DEFAULT_REGION', 'us-east-1')
 session = boto3.Session(region_name=region)
-sagemaker_session = Session(boto_session=session)
+sagemaker_session = sagemaker.Session(boto_session=session)
 
 # Define S3 paths and IAM role
 data_bucket = "shubham-mlops-iris-bucket"
