@@ -21,7 +21,7 @@ sagemaker_session = sagemaker.Session(boto_session=session)
 data_bucket = "shubham-mlops-iris-bucket"
 iris_data_uri = f"s3://{data_bucket}/iris.libsvm"  # Ensure iris.libsvm is correctly formatted and uploaded
 output_path = f"s3://{data_bucket}/model-artifacts/"  # Model artifacts go here
-role = "arn:aws:iam::919751357950:role/service-role/codebuild-iris-mlops-deploy-service-role"
+role = "arn:aws:iam::919751357950:role/SAGEMAKEXECUTIOON_1"
 
 # Retrieve the XGBoost built-in container image URI
 xgboost_image = retrieve("xgboost", region=region, version="1.2-1")
