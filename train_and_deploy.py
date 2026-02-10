@@ -7,16 +7,9 @@ from botocore.exceptions import ClientError  # Use ClientError instead of SageMa
 import datetime
 
 # Print SageMaker SDK version for debugging
-#print(f"SageMaker SDK version: {sagemaker.__version__}")
+print(f"SageMaker SDK version: {sagemaker.__version__}")
 
-# ---- Robust imports for image_uris ----
-try:
-    # Newer SDKs
-    from sagemaker.image_uris import retrieve as sm_retrieve_image
-except ImportError:
-    # Older SDKs — image_uris is a submodule in the top-level package
-    from sagemaker import image_uris as _image_uris
-    sm_retrieve_image = _image_uris.retrieve
+from sagemaker.image_uris import retrieve
 
 
 # Initialize AWS session
@@ -31,7 +24,7 @@ output_path = f"s3://{data_bucket}/model-artifacts/"  # Model artifacts go here
 role = "arn:aws:iam::919751357950:role/service-role/codebuild-iris-mlops-deploy-service-role"
 
 # Retrieve the XGBoost built-in container image URI
-xgboost_image = sm_retrieve_image("xgboost", region=region, version="1.2-1")
+xgboost_image = retrieve("xgboost", region=region, version="1.2-1")
 
 # Create an Estimator using the built-in XGBoost algorithm
 estimator = sagemaker.estimator.Estimator(
