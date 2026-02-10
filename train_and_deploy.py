@@ -15,10 +15,10 @@ session = boto3.Session(region_name=region)
 sagemaker_session = Session(boto_session=session)
 
 # Define S3 paths and IAM role
-data_bucket = "sagemaker-us-east-1-866824485776"
+data_bucket = "shubham-mlops-iris-bucket"
 iris_data_uri = f"s3://{data_bucket}/iris.libsvm"  # Ensure iris.libsvm is correctly formatted and uploaded
 output_path = f"s3://{data_bucket}/model-artifacts/"  # Model artifacts go here
-role = "arn:aws:iam::866824485776:role/service-role/AmazonSageMaker-ExecutionRole-20240913T125305"
+role = "arn:aws:iam::919751357950:role/service-role/codebuild-iris-mlops-deploy-service-role"
 
 # Retrieve the XGBoost built-in container image URI
 xgboost_image = image_uris.retrieve("xgboost", region=region, version="1.2-1")
