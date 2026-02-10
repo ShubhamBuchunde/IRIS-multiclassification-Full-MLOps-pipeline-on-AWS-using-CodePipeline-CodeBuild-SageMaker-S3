@@ -7,7 +7,7 @@ from botocore.exceptions import ClientError  # Use ClientError instead of SageMa
 import datetime
 
 # Print SageMaker SDK version for debugging
-print(f"SageMaker SDK version: {sagemaker.__version__}")
+#print(f"SageMaker SDK version: {sagemaker.__version__}")
 
 # ---- Robust imports for image_uris ----
 try:
